@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        background-image: url(/hicheeluud/zuragnuud/background\ picutre.jpg);
+        background-size: 1700px;
+        background-repeat: no-repeat;
+    }
+    button{
+        background-color: aqua;
+        width: 500px;
+        height: 40px;
+    }
+    h2{
+        font-size: 40px;
+    }
+</style>
+<body>
+    
+    <center><button onclick="random()">random too gargah</button>
+    <h2 id="result" style="height: 30px;"></h2> <div id="options-container" style="margin-top: 20px;">
+        </div>
+        </center>
+        
+
+    <script>
+        let num = 0;
+
+        function random() {
+            
+            num = Math.floor(Math.random() * (20000 - 10000 + 1)) + 10000;
+            document.getElementById("result").innerHTML = num;
+
+            
+            setTimeout(function () {
+                document.getElementById("result").innerHTML = "";
+                generateOptions(); 
+            }, 250);
+        }
+
+        function generateOptions() {
+            const container = document.getElementById("options-container");
+            container.innerHTML = ""; 
+
+            
+            let options = [num];
+            while (options.length < 4) {
+                let fakeNum = Math.floor(Math.random() * (20000 - 10000 + 1)) + 10000;
+                if (!options.includes(fakeNum)) {
+                    options.push(fakeNum);
+                }   
+            }
+
+            
+            options.sort(() => Math.random() - 0.5);
+
+            
+            options.forEach(opt => {
+                const btn = document.createElement("button");
+                btn.innerHTML = opt;
+                btn.style.margin = "5px";
+                btn.onclick = function() { shalgah(opt); };
+                container.appendChild(btn);
+            });
+        }
+
+        function shalgah(selectedNum) {
+            if (selectedNum === num) {
+                alert("Зөв байна!");
+            } else {
+                alert("Буруу байна. Зөв хариулт: " + num);
+            }
+            
+            document.getElementById("options-container").innerHTML = "";
+        }
+    </script>
+
+</body>
+</html>
