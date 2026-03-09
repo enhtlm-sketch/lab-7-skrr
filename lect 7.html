@@ -15,7 +15,8 @@
 let zurag = document.getElementById("shoozurag");
 let btn = document.getElementById("btn");;
 let too = document.getElementById("shooToo");
-let sum=0;
+let sum= Number(localStorage.getItem("nemeh")) || 0
+too.innerHTML = sum;
 let count=0;
 let saveArray = [];
 btn.addEventListener("click", function () {
@@ -24,6 +25,7 @@ let randomToo = Math.floor(Math.random() * 6) + 1;
 sum+=randomToo;
 zurag.src = "shoo" + randomToo +".png";
 too.innerHTML = sum;
+localStorage.setItem("nemeh", sum)
 count++;
 if(count==5){
     btn.style.display="none";
